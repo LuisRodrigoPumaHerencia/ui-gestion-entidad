@@ -1,0 +1,47 @@
+<div class="container justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h1>Inicio Sesión</h1>
+                </div>
+                <div class="card-body justify-content-center">
+                    <div class="row justify-content-center">
+                        <div class="col-12 text-center">
+                            <img src="../../../assets/img/icono.png" class="rounded mx-auto d-block" height="200" width="200">
+                        </div>
+                    </div>
+                    <form [formGroup]="formulario_login">
+                        <div class="form-floating mt-3">
+                            <input [formControl]="usuario" type="text" class="form-control" id="floatingInputGrid" placeholder="name@example.com" required>
+                            <label for="floatingInputGrid">Usuario</label>
+                        </div>
+                        <div [hidden]="usuario.valid || usuario.pristine" class="text-center">
+                            <div *ngIf="usuario.errors?.['required']" style="color:red;">Este campo es requerido</div>
+                            <div *ngIf="usuario.errors?.['maxlength']" style="color:red;">Se requiere un máximo de 50 caracteres</div>
+                        </div>
+                        <div class="form-floating mt-3">
+                            <input [formControl]="contrasena" type="password" class="form-control" id="floatingInputGrid" placeholder="name@example.com" required>
+                            <label for="floatingInputGrid">Contraseña</label>
+                        </div>
+                        <div [hidden]="contrasena.valid || contrasena.pristine" class="text-center">
+                            <div *ngIf="contrasena.errors?.['required']" style="color:red;">Este campo es requerido</div>
+                            <div *ngIf="contrasena.errors?.['maxlength']" style="color:red;">Se requiere un máximo de 50 caracteres</div>
+                        </div>
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-6">
+                                <button [hidden]="boton1" type="submit" class="btn btn-primary" (click)="iniciarSesion()" [disabled]="formulario_login.invalid">Iniciar Sesión</button>
+                                <button [hidden]="boton2" type="submit" class="btn btn-primary">
+                                    Iniciando Sesión...
+                                    <div class="spinner-border spinner-border-sm" role="status">
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

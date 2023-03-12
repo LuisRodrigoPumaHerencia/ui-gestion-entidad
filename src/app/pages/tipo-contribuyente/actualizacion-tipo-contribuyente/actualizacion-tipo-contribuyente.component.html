@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="container justify-content-center mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h1>Actualizar Contribuyente</h1>
+                </div>
+                <div class="card-body justify-content-center">
+                    <form [formGroup]="formulario_tipo_contribuyente">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 offset 2">
+                                <div class="form-floating mt-3">
+                                    <textarea type="text" [formControl]="nombre" class="form-control txt_area"
+                                        id="floatingInputGrid" placeholder="name@example.com" required></textarea>
+                                    <label for="floatingInputGrid">Nombre</label>
+                                </div>
+                                <div [hidden]="nombre.valid || nombre.pristine" class="text-center">
+                                    <div *ngIf="nombre.errors?.['required']" style="color:red;">Este campo es requerido</div>
+                                    <div *ngIf="nombre.errors?.['maxlength']" style="color:red;">Se requiere un máximo de 50 caracteres</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center mt-3">
+                            <div class="col-6 text-center">
+                                <button [hidden]="boton1" (click)="actualizarContribuyente()" [disabled]="formulario_tipo_contribuyente.invalid" type="submit" class="btn btn-success"> Actualizar</button>
+
+                                <button [hidden]="boton2" type="submit" class="btn btn-success">
+                                    Actualizando...
+                                    <div class="spinner-border spinner-border-sm" role="status">
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

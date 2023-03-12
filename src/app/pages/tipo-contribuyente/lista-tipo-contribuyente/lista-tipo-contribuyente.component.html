@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="container text-center mt-5" style="text-align: center;">
+    <h1>LISTA CONTRIBUYENTES</h1>
+    <div class="row">
+        <div class="col-md-3 col-sm-3 offset-9">
+            <button (click)="irRegistrarContribuyente()" type="button" class="btn btn-success"><i
+                    class="fa-sharp fa-solid fa-plus"></i><b class="m-2">Registrar</b></button>
+        </div>
+    </div>
+
+    <div class="mat-elevation-z8 mt-3">
+        <table mat-table [dataSource]="dataSource" style="text-align-last: center;">
+
+            <!-- Nombre Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef style="width: 85% !important;"> Nombre </th>
+                <td mat-cell *matCellDef="let element" style="width: 85% !important;"> {{element.nombre}} </td>
+            </ng-container>
+
+            <!-- Acciones Column -->
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="row justify-items-center">
+                        <div class="col-sm-6 col-md-6">
+                            <button mat-mini-fab (click)="obtenerContribuyente(element.nombre, element.idTipoContribuyente)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <button mat-mini-fab (click)="eliminarDocente(element.idTipoContribuyente)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Seleccionar página de elementos periódicos">
+        </mat-paginator>
+    </div>
+</div>
+<app-footer></app-footer>

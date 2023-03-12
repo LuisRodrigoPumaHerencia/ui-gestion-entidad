@@ -1,0 +1,101 @@
+<app-header></app-header>
+<div class="container justify-content-center mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-10">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h1>Registro Documento</h1>
+                </div>
+                <div class="card-body justify-content-center">
+                    <form [formGroup]="formulario_entidad">
+                        <div class="row justify-content-center">
+
+                            <div class="col-md-6 mt-2" style="align-self: center;">
+                                <select [formControl]="id_tipo_documento" class="form-select form-select-lg" aria-label="Default select example" required>
+                                    <option value="" hidden selected>Tipo Documento</option>
+                                    <option *ngFor="let documento of documentos" value={{documento.idTipoDocumento}}>{{documento.nombre}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mt-2">
+                                <div class="form-floating">
+                                    <input type="text" [formControl]="nro_documento" class="form-control"
+                                        id="floatingInputGrid" placeholder="name@example.com" required>
+                                    <label for="floatingInputGrid">Nro. Documento</label>
+                                </div>
+                                <div [hidden]="nro_documento.valid || nro_documento.pristine" class="text-center">
+                                    <div *ngIf="nro_documento.errors?.['required']" style="color:red;">Este campo es requerido</div>
+                                    <div *ngIf="nro_documento.errors?.['maxlength']" style="color:red;">Se requiere un máximo de 25 caracteres</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-2">
+                                <div class="form-floating">
+                                    <textarea type="text" [formControl]="razon_social" class="form-control txt_area"
+                                        id="floatingInputGrid" placeholder="name@example.com" required></textarea>
+                                    <label for="floatingInputGrid">Razón Social</label>
+                                </div>
+                                <div [hidden]="razon_social.valid || razon_social.pristine" class="text-center">
+                                    <div *ngIf="razon_social.errors?.['required']" style="color:red;">Este campo es requerido</div>
+                                    <div *ngIf="razon_social.errors?.['maxlength']" style="color:red;">Se requiere un máximo de 100 caracteres</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-2">
+                                <div class="form-floating">
+                                    <textarea type="text" [formControl]="nombre_comercial" class="form-control txt_area"
+                                        id="floatingInputGrid" placeholder="name@example.com"></textarea>
+                                    <label for="floatingInputGrid">Nombre Comercial</label>
+                                </div>
+                                <div [hidden]="nombre_comercial.valid || nombre_comercial.pristine" class="text-center">
+                                    <div *ngIf="nombre_comercial.errors?.['maxlength']" style="color:red;">Se requiere un máximo de 100 caracteres</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-2" style="align-self: center;">
+                                <select [formControl]="id_tipo_contribuyente" class="form-select form-select-lg" aria-label="Default select example" required>
+                                    <option value="" hidden selected>Tipo Contribuyente</option>
+                                    <option *ngFor="let contribuyente of contribuyentes" value={{contribuyente.idTipoContribuyente}}>{{contribuyente.nombre}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mt-2">
+                                <div class="form-floating">
+                                    <textarea type="text" [formControl]="direccion" class="form-control txt_area"
+                                        id="floatingInputGrid" placeholder="name@example.com"></textarea>
+                                    <label for="floatingInputGrid">Dirección</label>
+                                </div>
+                                <div [hidden]="direccion.valid || direccion.pristine" class="text-center">
+                                    <div *ngIf="direccion.errors?.['maxlength']" style="color:red;">Se requiere un máximo de 250 caracteres</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-2" style="align-self: center;">
+                                <div class="form-floating">
+                                    <input type="text" [formControl]="telefono" class="form-control"
+                                        id="floatingInputGrid" placeholder="name@example.com">
+                                    <label for="floatingInputGrid">Teléfono</label>
+                                </div>
+                                <div [hidden]="telefono.valid || telefono.pristine" class="text-center">
+                                    <div *ngIf="telefono.errors?.['maxlength']" style="color:red;">Se requiere un máximo de 50 caracteres</div>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-3">
+                                <div class="col-6 text-center">
+                                    <button [hidden]="boton1" (click)="actualizarEntidad()" [disabled]="formulario_entidad.invalid" type="submit" class="btn btn-success"> Actualizar</button>
+                                    <button [hidden]="boton2" type="submit" class="btn btn-success">
+                                        Actualizando...
+                                        <div class="spinner-border spinner-border-sm" role="status">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
