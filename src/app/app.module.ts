@@ -25,8 +25,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,9 @@ import { LoginComponent } from './pages/login/login.component';
     MatGridListModule,
     MatIconModule
   ],
-  providers: [DatePipe],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+  },DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './helpers/auth.guard';
 import { ActualizacionEntidadComponent } from './pages/entidad/actualizacion-entidad/actualizacion-entidad.component';
 import { ListaEntidadComponent } from './pages/entidad/lista-entidad/lista-entidad.component';
 import { RegistroEntidadComponent } from './pages/entidad/registro-entidad/registro-entidad.component';
@@ -22,43 +23,53 @@ const routes: Routes = [
       },
       {
         path: 'lista-entidad',
-        component: ListaEntidadComponent
+        component: ListaEntidadComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'registro-entidad',
-        component: RegistroEntidadComponent
+        component: RegistroEntidadComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'actualizacion-entidad',
-        component: ActualizacionEntidadComponent
+        component: ActualizacionEntidadComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'lista-tipo-contribuyente',
-        component: ListaTipoContribuyenteComponent
+        component: ListaTipoContribuyenteComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'registro-tipo-contribuyente',
-        component: RegistroTipoContribuyenteComponent
+        component: RegistroTipoContribuyenteComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'actualizacion-tipo-contribuyente',
-        component: ActualizacionTipoContribuyenteComponent
+        component: ActualizacionTipoContribuyenteComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'lista-tipo-documento',
-        component: ListaTipoDocumentoComponent
+        component: ListaTipoDocumentoComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'registro-tipo-documento',
-        component: RegistroTipoDocumentoComponent
+        component: RegistroTipoDocumentoComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'actualizacion-tipo-documento',
-        component: ActualizacionTipoDocumentoComponent
+        component: ActualizacionTipoDocumentoComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'inicio',
-        component: InicioComponent
+        component: InicioComponent,
+        canActivate: [AuthGuard]
       },
     ]
   }
